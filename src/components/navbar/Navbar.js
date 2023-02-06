@@ -1,4 +1,5 @@
 import styles from './Navbar.module.css'
+import "@fontsource/poppins";
 
 const Navbar = () => {
     return(
@@ -14,10 +15,10 @@ const Navbar = () => {
 
                 <div className={styles.user}>
                     <a>
-                        Login
+                        CONNEXION
                     </a>
                     <a>
-                        Register
+                        INSCRIPTION
                     </a>
                 </div>
             </section>
