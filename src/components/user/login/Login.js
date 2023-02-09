@@ -1,5 +1,6 @@
 import React, {Component, useState} from 'react';
-import Dashboard from "../dashboad/dashboard";
+import Dashboard from "../../../pages/admin/Dashboard";
+import Spacer15 from "../../ui/Spacer15";
 
 const Login = () => {
 
@@ -45,6 +46,7 @@ const Login = () => {
             <input placeholder="userEmail" onChangeText={text => setEmail(text)}/>
             <inputt placeholder="userPassword" onChangeText={text => setPassword(text)}/>
             <button title="Envoyer" onPress={handleSend}/>
+            <Spacer15 />
         </>
     );
 

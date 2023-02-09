@@ -1,14 +1,15 @@
 import styles from './App.module.css'
 import "@fontsource/poppins";
+import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
-import LineCharts from "./graphique/linechart/LineChart";
-import Register from "./components/user/register/Register";
-import Spacer15 from "./components/ui/Spacer15";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
     <div className={styles.app}>
-        <Register />
+        <Navbar />
+        <Home />
+        <Footer />
         <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossOrigin></script>
 
         <script
