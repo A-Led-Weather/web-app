@@ -10,7 +10,7 @@ const HomePage = () => {
     const [loc, setLoc] = useState();
     const [humidite, setHumidite] = useState();
 
-    const baseUrl = 'https://aled-weather.fr:8080/reports';
+    const baseUrl = 'http://172.20.10.2:8080/reports';
 
     useEffect(() => {
         const getData = async () => {

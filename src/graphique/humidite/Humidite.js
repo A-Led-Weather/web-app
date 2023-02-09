@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const baseUrl = 'https://aled-weather.fr:8080/reports';
+const baseUrl = 'http://172.20.10.2:8080/reports';
 
 const Humidity = () => {
     const [data, setData] = useState([]);

@@ -8,7 +8,7 @@ const Register = () => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
 
-    const baseUrl = 'https://aled-weather.fr:8080/users';
+    const baseUrl = 'http://172.20.10.2:8080/users';
 
     const handleSubmit = event => {
         event.preventDefault();
