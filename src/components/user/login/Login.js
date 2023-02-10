@@ -1,55 +1,78 @@
-import React, {Component, useState} from 'react';
-import Dashboard from "../../../pages/admin/Dashboard";
-import Spacer15 from "../../ui/Spacer15";
+import React, {useState} from 'react';
+import axios from 'axios';
 
 const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(false);
 
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    const baseUrl = "https://aled-weather.fr:8080/token"
-
-    const returnPage = () => {
-        Dashboard()
-    }
-
-    const handleSend = () => {
-        fetch(baseUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+        try {
+            const response = await axios.post('https://aled-weather.fr:8080/token', {
                 userEmail: email,
-                userPassword: password
-            })
-        })
-            .then(async (response) => {
-                if (response.status === 200) {
-                    let responseJson = await response.json();
-                    console.log(responseJson);
-                    setIsLoggedIn(true);
-                    returnPage()
-                } else {
-                    console.log('Erreur de connexion');
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
+                userPassword: password,
+            }, {
+                headers: {
+
+                },
+            });
+
+            if (response.status === 200) {
+                setSuccess(true);
+                setError(null);
+            }
+        } catch (err) {
+            setError(err.message);
+            setSuccess(false);
+        }
+    };
 
     return (
-        <>
-            <input placeholder="userEmail" onChangeText={text => setEmail(text)}/>
-            <inputt placeholder="userPassword" onChangeText={text => setPassword(text)}/>
-            <button title="Envoyer" onPress={handleSend}/>
-            <Spacer15 />
-        </>
-    );
+        <div className="container-fluid">
+            <div className="container d-flex justify-content-center align-items-center flex-column flex-lg-column">
 
-}
+                {success && (
+                    <p>Connexion réussie !</p>
+                )}
+                {error && (
+                    <p>Erreur : {error}</p>
+                )}
+                <form onSubmit={handleSubmit}
+                      style={{
+                          display : "flex",
+                          justifyContent : "center",
+                          alignItems : "center",
+                          flexDirection : "column",
+                          gap : "2rem",
+                          height : '66.35vh'
+                      }}
+                >
+                    <input
+                        className="input-group-text"
+                        type="email"
+                        placeholder="Adresse email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <input
+                        className="input-group-text"
+                        type="password"
+                        placeholder="Mot de passe"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button
+                        type="submit"
+                        className="btn btn-outline-secondary"
+                    >
+                        Se connecter</button>
+                </form>
+            </div>
+        </div>
+    );
+};
 
 export default Login;

@@ -8,7 +8,7 @@ const Register = () => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
 
-    const baseUrl = 'http://172.20.10.2:8080/users';
+    const baseUrl = 'https://aled-weather.fr:8080/users';
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -50,21 +50,26 @@ const Register = () => {
                           display : "flex",
                           justifyContent : "center",
                           alignItems : "center",
-                          flexDirection : "column"
+                          flexDirection : "column",
+                          gap : '2rem',
+                          height : '66.35vh'
                       }}>
                     <input
+                        className="input-group-text"
                         placeholder="userName"
                         value={user}
                         onChange={event => setUser(event.target.value)}
                         name="userName"
                     />
                     <input
+                        className="input-group-text"
                         placeholder="userEmail"
                         value={email}
                         onChange={event => setEmail(event.target.value)}
                         name="userEmail"
                     />
                     <input
+                        className="input-group-text"
                         placeholder="userPassword"
                         type="password"
                         value={password}
@@ -73,9 +78,11 @@ const Register = () => {
                     />
                     {error && <div className="alert alert-danger">{error}</div>}
                     {success && <div className="alert alert-success">L'utilisateur a été enregistré avec succès</div>}
-                    <button type="submit" className="btn btn-dark" title="Envoyer">
-                        Envoyer
-                    </button>
+                    <button
+                        type="submit"
+                        className="btn btn-outline-secondary"
+                    >
+                        Se connecter</button>
                 </form>
             </div>
         </section>

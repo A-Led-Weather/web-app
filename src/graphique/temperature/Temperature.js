@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import axios from "axios";
+import styles from "../Graph.module.css";
 
-const baseUrl = 'http://172.20.10.2:8080/reports';
+
+const baseUrl = 'https://aled-weather.fr:8080/reports';
 
 const Temperature = () => {
     const [temperatures, setTemperatures] = useState([]);
@@ -37,7 +39,7 @@ const Temperature = () => {
     }));
 
     return (
-        <ResponsiveContainer width="45%" height="90%">
+        <ResponsiveContainer width="45%" height="60%" className={styles.graph}>
             <LineChart
                 data={data}
                 margin={{

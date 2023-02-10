@@ -9,8 +9,9 @@ const HomePage = () => {
     const [temp, setTemp] = useState();
     const [loc, setLoc] = useState();
     const [humidite, setHumidite] = useState();
+    const [device, setDevice] = useState()
 
-    const baseUrl = 'http://172.20.10.2:8080/reports';
+    const baseUrl = 'https://aled-weather.fr:8080/reports';
 
     useEffect(() => {
         const getData = async () => {
@@ -21,9 +22,14 @@ const HomePage = () => {
                     }
                 });
                 const data = response.data;
+                console.log(data)
                 const temperature = data[0].temperature;
                 const locationName = data[0].locationName;
                 const humidite = data[0].humidity
+                const device = data[0].deviceUuid
+                setDevice(
+                    device
+                )
                 setHumidite(
                     humidite
                 )
@@ -53,13 +59,12 @@ const HomePage = () => {
                     <h4 className="mt-5">
                         Mardi. 7 Février
                     </h4>
+                </div>
                     <div className="container d-flex justify-content-center align-items-center gap-2 mt-5">
-                        <div className="row">
-                            <div className="col-sm">
+                        <div className="row ">
                                 <div className="col-sm">
                                     <div className="card text-center"
                                          style={{
-                                             width: '25vw'
                                          }}
                                     >
                                         <div className="card-body">
@@ -67,17 +72,15 @@ const HomePage = () => {
                                             <p className="card-text">Il fait actuellement {temp}° à {loc}.</p>
                                             <p className="card-text">
                                                 <small className="text-muted">
-                                                    Dernière actualisation il y a 3 minutes.
+                                                    Dernière actualisation il y a 3 minutes, à lyon par la sonde {device}
                                                 </small>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             <div className="col-sm">
                                 <div className="card text-center"
                                      style={{
-                                         width: '25vw'
                                      }}
                                 >
                                     <div className="card-body">
@@ -85,7 +88,7 @@ const HomePage = () => {
                                         <p className="card-text">Le taux d'humidité est de {humidite}% à {loc}.</p>
                                         <p className="card-text">
                                             <small className="text-muted">
-                                                Dernière actualisation il y a 3 minutes.
+                                                Dernière actualisation il y a 3 minutes, à lyon par la sonde {device}
                                             </small>
                                         </p>
                                     </div>
@@ -97,7 +100,6 @@ const HomePage = () => {
                     <Map/>
                     <Spacer15/>
                     <Spacer15/>
-                </div>
             </section>
         </>
     )

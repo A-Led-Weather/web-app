@@ -5,6 +5,9 @@ import {useEffect, useState} from "react";
 import Releve from "../releve/Releve";
 import HomePage from "./HomePage";
 import "@fontsource/montserrat";
+import Spacer15 from "../../components/ui/Spacer15";
+
+import styles from './Home.module.css'
 
 const Home = () => {
 
@@ -24,7 +27,7 @@ const Home = () => {
 
     return (
         <>
-            <section className="container d-flex justify-content-start align-items-center gap-5 mt-5 p-0">
+            <section className="container d-flex justify-content-start align-items-center gap-5 mt-5 p-0 mb-3">
                 <a
                     onClick={displayHome}
                     style={{
@@ -63,18 +66,14 @@ const Home = () => {
                 <div>
                     <IndexGraph />
                 <div
+                    className={styles.wrapperHome}
                     style={{
-                        width: "100vw",
-                        height: "60vh",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        flexDirection: "row",
-                        background: "#F7FAFB"
+
                     }}
                 >
                     <Temperature />
                     <Humidity />
+                    <Spacer15 />
                 </div>
                 </div>
             )}

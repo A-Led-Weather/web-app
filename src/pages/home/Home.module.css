@@ -46,3 +46,20 @@
         flex-direction: column;
     }
 }
+
+.wrapperHome {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: #F7FAFB;
+}
+
+@media (max-width: 992px) {
+    .wrapperHome {
+        flex-direction: column;
+        height:  100vh;
+    }
+}

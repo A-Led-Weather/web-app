@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import styles from '../Graph.module.css'
 
-const baseUrl = 'http://172.20.10.2:8080/reports';
+const baseUrl = 'https://aled-weather.fr:8080/reports';
 
 const Humidity = () => {
     const [data, setData] = useState([]);
@@ -18,7 +19,7 @@ const Humidity = () => {
 
                 setData(response.data.map(item => ({
                     name: item.dateTime,
-                    temperature: item.humidity,
+                    humidite: item.humidity,
                 })));
             } catch (error) {
                 console.error(error);
@@ -29,7 +30,7 @@ const Humidity = () => {
     }, []);
 
     return (
-        <ResponsiveContainer width="45%" height="90%">
+        <ResponsiveContainer width="45%" height="60%" className={styles.graph}>
             <LineChart
                 data={data}
                 margin={{
@@ -44,7 +45,7 @@ const Humidity = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="temperature" stroke="#8884d8" />
+                <Line type="monotone" dataKey="humidite" stroke="#8fd884" />
             </LineChart>
         </ResponsiveContainer>
     );

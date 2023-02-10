@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import {GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
 import axios from "axios";
 import {useState} from "react";
+import Spacer15 from "../ui/Spacer15";
 
 const baseUrl = 'https://aled-weather.fr:8080/locations/lyon'
 
@@ -49,9 +50,13 @@ function Map() {
     };
 
     return (
-        <section className="container-fluid p-0">
+        <section className="container-fluid p-0 mt-5"
+        style={{
+            height : '70vh'
+        }}
+        >
             <div className="container d-flex justify-content-center align-items-center flex-column ">
-                <h1>
+                <h1 className="mt-5">
                     Localisations de nos sondes
                 </h1>
                 <span className="mt-5"></span>
@@ -69,6 +74,7 @@ function Map() {
                     </GoogleMap>
                 </LoadScript>
             </div>
+            <Spacer15 />
         </section>
     )
 }
